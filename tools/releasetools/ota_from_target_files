@@ -305,7 +305,7 @@ def SignOutput(temp_zip_name, output_zip_name):
   common.SignFile(temp_zip_name, output_zip_name, OPTIONS.package_key, pw,
                   whole_file=True)
 
-# Printing of md5sum added for Evervolv by cocide
+# Printing of md5sum added for SavagedZen by cocide
   print "############ md5sum ############\n"
   os.system("md5sum " + output_zip_name + " > " + output_zip_name + ".md5sum")
   os.system("cat " + output_zip_name + ".md5sum")
@@ -397,7 +397,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
   AppendAssertions(script, input_zip)
   device_specific.FullOTA_Assertions()
 
-# MOTD during flash added for Evervolv by cocide
+# MOTD during flash added for SavagedZen by cocide
   if (OPTIONS.motd != None):
     eachRawMotd = OPTIONS.motd.split("\\n")
     for eachMotd in eachRawMotd:
@@ -422,21 +422,21 @@ def WriteFullOTAPackage(input_zip, output_zip):
   script.ShowProgress(0.5, 0)
 
   if OPTIONS.wipe_user_data:
-# Comments during install added for Evervolv by cocide
+# Comments during install added for SavagedZen by cocide
     script.Print("Wiping user data")
     script.FormatPartition("/data")
 
-# Comments during install added for Evervolv by cocide
+# Comments during install added for SavagedZeb by cocide
   script.Print("Formatting system")
   script.FormatPartition("/system")
   script.Mount("/system")
   if OPTIONS.recovery:
     script.UnpackPackageDir("recovery", "/system")
-# Comments during install added for Evervolv by cocide
-  script.Print("Installing Evervolv")
+# Comments during install added for SavagedZeb by cocide
+  script.Print("Installing SavagedZenMOD")
   script.UnpackPackageDir("system", "/system")
 
-# Comments during install added for Evervolv by cocide
+# Comments during install added for SavagedZen by cocide
   script.Print("Creating symlinks")
   symlinks = CopySystemFiles(input_zip, output_zip)
   script.MakeSymlinks(symlinks)
@@ -452,7 +452,7 @@ def WriteFullOTAPackage(input_zip, output_zip):
     MakeRecoveryPatch(output_zip, recovery_img, boot_img)
 
   Item.GetMetadata(input_zip)
-# Comments during install added for Evervolv by cocide
+# Comments during install added for SavagedZen by cocide
   script.Print("Setting permissions")
   Item.Get("system").SetPermissions(script)
 
