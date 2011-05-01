@@ -51,7 +51,7 @@ class Options(object): pass
 OPTIONS = Options()
 OPTIONS.tempfiles = []
 OPTIONS.verbose = False
-OPTIONS.package_name = "GApps"
+OPTIONS.package_name = "SavagedZen GApps"
 OPTIONS.directory = False
 OPTIONS.source = False
 OPTIONS.directory = sys.path[0] + "/"
@@ -75,7 +75,7 @@ def Run(args, **kwargs):
 def CreateTmpDir():
   """Create a tem directory to work in."""
 
-  tmp = tempfile.mkdtemp(prefix="evervolv-gapps-")
+  tmp = tempfile.mkdtemp(prefix="sz-gapps-")
   OPTIONS.tempfiles.append(tmp)
   return tmp
 
@@ -89,7 +89,7 @@ def CreateDir(directory):
 def UnzipTemp(filename):
   """Unzip the given archive into a temporary directory and return the name."""
 
-  tmp = tempfile.mkdtemp(prefix="evervolv-gapps-")
+  tmp = tempfile.mkdtemp(prefix="sz-gapps-")
   OPTIONS.tempfiles.append(tmp)
   cmd = ["unzip", "-o", "-q", filename, "-d", tmp]
   p = Run(cmd, stdout=subprocess.PIPE)
@@ -202,21 +202,25 @@ def main(argv):
 
 
   FILE = open(OPTIONS.working_dir + "/GAPPS/META-INF/com/google/android/updater-script","w")
-  FILE.write("ui_print(\"Installing GApps...\");\nrun_program(\"/sbin/busybox\", \"mount\", \"/system\");\nshow_progress(1, 15);\n")
+  FILE.write("ui_print(\"Installing Savaged-Zen GApps to system...\");\nrun_program("mount("\"/MTD\", \"system\", \"/system\");\nshow_progress(1, 15);\n")
   FILE.write("delete(")
   filename = files_to_remove.pop()
   FILE.write("\"" + filename + "\"")
   for filename in files_to_remove:
     FILE.write(", \"" + filename + "\"")
   FILE.write(", \"/system/app/ChromeToPhone.apk\", \"/system/app/com.amazon.mp3.apk\", \"/system/app/GoogleGoggles.apk\", \"/system/app/HtcCopyright.apk\", \"/system/app/HtcEmailPolicy.apk\", \"/system/app/HtcSettings.apk\", \"/system/app/PassionQuickOffice.apk\", \"/system/app/Provision.apk\", \"/system/app/QuickSearchBox.apk\");\n")
-  FILE.write("package_extract_dir(\"system\", \"/system\");\nui_print(\"GAPPS Installation complete!\");\nrun_program(\"/sbin/busybox\", \"umount\", \"/system\");")
+  FILE.write("package_extract_dir(\"system\", \"/system\");\nrun_program("mount("\"MTD\", \"userdata\", \"/data\");\nui_print(\"GAPPS Installation system complete!\");\n")
+  FILE.write("run_program("unmount("\"/system"\);\nshow_progress(1, 20);\n")
+  FILE.write("ui_print(\"Installing Savaged-Zen GApps to data...\");\n")
+  FILE.write("set_perm(1000, 1000, 0771, \"/data/app\");\n")
+  FILE.write(""package_extract_dir(\"data\", \"/data\");\nui_print(\"GAPPS to Data Installation complete!\");\nrun_program(\"unmount("\"/userdata"\");")
   FILE.close()
 
   today = datetime.date.today()
 
   MakeZip(OPTIONS.working_dir + "/GAPPS", "../" + OPTIONS.package_name + ".zip")
 
-  true_file_name = OPTIONS.directory + "../GApps/GApps-" + today.strftime("%Y%m%d") + ".zip"
+  true_file_name = OPTIONS.directory + "../GApps/sz-gapps-" + today.strftime("%Y%m%d") + ".zip"
 
   SignOutput(OPTIONS.working_dir + "/" + OPTIONS.package_name + ".zip", true_file_name)
 
