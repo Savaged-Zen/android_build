@@ -426,14 +426,14 @@ def WriteFullOTAPackage(input_zip, output_zip):
     script.Print("Wiping user data")
     script.FormatPartition("/data")
 
-# Comments during install added for SavagedZeb by cocide
+# Comments during install added for SavagedZen by cocide
   script.Print("Formatting system")
   script.FormatPartition("/system")
   script.Mount("/system")
   if OPTIONS.recovery:
     script.UnpackPackageDir("recovery", "/system")
-# Comments during install added for SavagedZeb by cocide
-  script.Print("Installing SavagedZenMOD")
+# Comments during install added for SavagedZen by cocide
+  script.Print("Installing SavagedZen(MOD)")
   script.UnpackPackageDir("system", "/system")
 
 # Comments during install added for SavagedZen by cocide
@@ -862,10 +862,11 @@ def main(argv):
 
 if __name__ == '__main__':
   try:
-    common.CloseInheritedPipes()
     main(sys.argv[1:])
   except common.ExternalError, e:
     print
     print "   ERROR: %s" % (e,)
     print
     sys.exit(1)
+
+

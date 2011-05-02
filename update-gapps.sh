@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#script for evervolv written by cocide
+#script for SavagedZeb written by cocide
 #will pull gapps related packages off the primary connected phone using adb and put the files into the gapps folder inside the repo (vendor/savagedzen/GAPPS)
 echo "if you have permissions problems kill the adb server (adb kill-server) and start it again with sudo (sudo adb start-server)"
 
@@ -75,7 +75,7 @@ adb pull /system/app/soundback.apk vendor/savagedzen/GAPPS/system/app/
 adb pull /system/app/talkback.apk vendor/savagedzen/GAPPS/system/app/
 mkdir -p vendor/savagedzen/GAPPS/system/etc/permissions
 adb pull /system/etc/permissions/com.google.android.maps.xml vendor/savagedzen/GAPPS/system/etc/permissions/
-adb pull /system/etc/permissions/features.xml vendor/evervolv/GAPPS/system/etc/permissions/
+adb pull /system/etc/permissions/features.xml vendor/savagedzen/GAPPS/system/etc/permissions/
 mkdir -p vendor/savagedzen/GAPPS/system/framework
 adb pull /system/framework/com.google.android.maps.jar vendor/savagedzen/GAPPS/system/framework/
 mkdir -p vendor/savagedzen/GAPPS/system/lib
