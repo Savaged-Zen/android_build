@@ -1184,7 +1184,7 @@ otapackage: $(INTERNAL_OTA_PACKAGE_TARGET)
 bacon: otapackage
 	$(hide) \
 		WANT_SQUASHFS=$(WANT_SQUASHFS) \
-		./vendor/cyanogen/tools/squisher
+		./vendor/savagedzen/tools/squisher
 
 endif    # TARGET_NO_KERNEL != true
 endif    # TARGET_DEVICE != generic
